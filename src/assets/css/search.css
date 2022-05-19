@@ -1,0 +1,300 @@
+header {
+  padding: 1.4rem 1rem;
+}
+
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .container .navbar {
+  display: flex;
+  align-items: center;
+}
+
+header .container .brand .wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+header .container .brand .wrap strong {
+  font-size: calc(1.875rem - 0.4rem);
+
+  background: -webkit-linear-gradient(90deg, #ecaa80 0%, #725de5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  margin-bottom: 0.2rem;
+}
+
+header .container .brand .wrap span {
+  font-size: 12px;
+  color: var(--text);
+  font-weight: 600;
+}
+
+header .container .navbar li + li {
+  margin-left: calc(3.25rem - 1rem);
+}
+
+header .container .navbar li a {
+  font-size: 14px;
+  color: var(--text);
+
+  transition: color 0.2s ease;
+}
+
+header .container .navbar li a:hover {
+  color: var(--primary);
+}
+
+header .container .buttons {
+  display: flex;
+  align-items: center;
+  gap: calc(3.25rem - 1.5rem);
+
+  font-size: 14px;
+}
+
+header .container .buttons a:first-child {
+  color: var(--text-800);
+  font-weight: 500;
+}
+
+header .container .buttons a:first-child:hover {
+  color: var(--text);
+}
+
+header .container .buttons a:last-child {
+  padding: 12px 1rem;
+  background-color: var(--secondary);
+  border-radius: 10px;
+  color: var(--text);
+  cursor: pointer;
+
+  font-weight: 700;
+
+  transition: all 0.2s ease-in;
+}
+
+header .container .buttons a:last-child:hover {
+  background: var(--primary);
+}
+
+/*SEARCH CSS*/
+section.search {
+  padding: 1.2rem 0;
+}
+
+section.search .container .search-content h1 {
+  color: var(--text);
+  margin-bottom: 0.6rem;
+  font-size: 15px;
+}
+
+section.search .container .search-content div {
+  position: relative;
+}
+
+section.search .container .search-content input {
+  width: 100%;
+  height: 55px;
+
+  border-radius: 8px;
+  background-color: var(--secondary);
+  border: none;
+
+  color: var(--text);
+
+  padding-left: 1rem;
+}
+
+section.search .container .search-content input::placeholder {
+  color: var(--text);
+  opacity: 0.6;
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+section.search .container .search-content button {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-10%, -50%);
+
+  border: none;
+  padding: 12px 12px;
+  border-radius: 6px;
+
+  background-color: var(--primary);
+  color: var(--text);
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+section.search .container .search-content input:focus {
+  outline: none;
+}
+
+/*END SEARCH CSS*/
+
+/*JOBS*/
+section.jobs {
+  padding: 1rem 0;
+}
+
+section.jobs .container .categories div.form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.6rem;
+}
+
+section.jobs .container .categories div.form a.radio + div {
+  margin-top: 0.6rem;
+}
+
+section.jobs .container .categories h2 {
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+section.jobs .container .categories label {
+  color: var(--text);
+  margin-left: 10px;
+
+  cursor: pointer;
+}
+
+section.jobs .container .job-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+section.jobs .container .job-list .project a.logo {
+  width: 50px;
+  height: 50px;
+  background: var(--primary);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 1rem;
+
+  border-radius: 4px;
+
+  color: var(--text);
+}
+
+section.jobs .container .job-list .project h2 {
+  font-size: bold;
+  margin-bottom: 0.6rem;
+}
+
+section.jobs .container .job-list .project {
+  background-color: var(--text);
+  padding: 1rem;
+
+  border-radius: 4px;
+  height: auto !important;
+}
+
+section.jobs .container .job-list .project p {
+  font-size: 14px;
+  line-height: 22px;
+
+  margin-bottom: 1rem;
+}
+
+section.jobs .container .job-list .project .tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  margin-bottom: 2rem;
+
+  gap: 6px;
+}
+
+section.jobs .container .job-list .project .tags span {
+  padding: 8px 12px;
+  background-color: #e1ebfb;
+  color: blue;
+
+  font-size: 12px;
+
+  border-radius: 4px;
+}
+
+section.jobs .container .job-list .project .buttons {
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 1rem;
+}
+
+section.jobs .container .job-list .project .buttons a {
+  padding: 12px 1rem;
+  background-color: var(--primary);
+  border-radius: 4px;
+  color: var(--text);
+  cursor: pointer;
+
+  font-size: 14px;
+  font-weight: bold;
+
+  transition: all 0.2s ease-in;
+}
+
+section.jobs .container .job-list .project .buttons a:hover {
+  filter: brightness(0.8);
+}
+
+section.jobs .container .job-list .project .buttons a + a {
+  margin-left: 0.4rem;
+
+  background-color: var(--secondary);
+}
+
+/*END JOBS*/
+
+/*PAGINATION*/
+section.pagination .container {
+  display: flex;
+  justify-content: flex-end;
+
+  margin-top: 1.2rem;
+}
+
+section.pagination .container .pages {
+  display: flex;
+  align-items: center;
+}
+
+section.pagination .container .pages a {
+  width: 30px;
+  height: 30px;
+  background-color: var(--secondary);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--text);
+  font-weight: bold;
+  border-radius: 2px;
+}
+
+section.pagination .container .pages a.active {
+  background-color: var(--primary);
+}
+
+section.pagination .container .pages a + a {
+  margin-left: 10px;
+}
+/*END PAGINATION*/

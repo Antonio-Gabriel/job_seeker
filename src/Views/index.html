@@ -1,0 +1,203 @@
+{% extends "@shared/base.html" %} 
+
+{% block title %}Home{% endblock %} 
+
+{%block head %} 
+    {{ parent() }}
+    <link rel="stylesheet" href="src/assets/css/main.css" />
+{% endblock %} 
+
+{% block content %}
+
+{% include "@shared/header.html" %}
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1>Consiga o trabalho certo e rápido que você almeja</h1>
+      <p>Acredite que conseguiremos realizar uma boa parte dos teus sonhos</p>
+      <div>
+        <a href="#" class="button">Trabalhe conosco</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img
+        src="src/assets/images/search-job-woman.jpg"
+        alt="the people searching for working"
+      />
+    </div>
+  </div>
+</section>
+
+<section class="categories">
+  <div class="container">
+    <div class="categorie-text">
+      <h2>Veja por que nos escolher como a primeira opção</h2>
+      <p>Proceguir com dicas</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <img src="src/assets/images/lamp.png" alt="inovation" />
+        <h3>Ideia inovadora</h3>
+        <p>
+          Quando inovação e tecnologia se encontram. Foi assim que nosso produto
+          foi criado.
+        </p>
+      </div>
+      <div class="card">
+        <img src="src/assets/images/layer.png" alt="Experience" />
+        <h3>Experiência úncia</h3>
+        <p>
+          Experiência do usuário é importante para nós. Nosso App é muito
+          intuitivo, então você sabe o que fazer.
+        </p>
+      </div>
+      <div class="card">
+        <img src="src/assets/images/phone.png" alt="navigation" />
+        <h3>Navegação intuitiva</h3>
+        <p>
+          Cada elemento em seu lugar! Um botão de menu e elementos ativos
+          destacados.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="aboutUs">
+  <div class="container">
+    <div class="about-content">
+      <h2>Conheça sobre os nossos serviços</h2>
+      <p>
+        A tecnologia de ultima geração faz com que seja possível desenhar
+        soluções úteis.
+      </p>
+
+      <div>
+        <a href="#">Nossas tecnologias</a>
+      </div>
+    </div>
+    <div class="about-figure">
+      <div class="card">
+        <div class="card-top">
+          <img src="src/assets/images/development.png" alt="development logo" />
+          <div class="describe">
+            <span>Área de</span>
+            <strong>Desenvolvimento</strong>
+          </div>
+        </div>
+
+        <p>
+          Quando inovação e tecnologia se encontram. Foi assim que nosso produto
+          foi criado.
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <img src="src/assets/images/hospital.png" alt="hospital logo" />
+          <div class="describe">
+            <span>Área de</span>
+            <strong>Saúde</strong>
+          </div>
+        </div>
+
+        <p>
+          Quando inovação e tecnologia se encontram. Foi assim que nosso produto
+          foi criado.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <img src="src/assets/images/hospital.png" alt="hospital logo" />
+          <div class="describe">
+            <span>Áreas</span>
+            <strong>Diversas</strong>
+          </div>
+        </div>
+
+        <p>
+          Quando inovação e tecnologia se encontram. Foi assim que nosso produto
+          foi criado.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="participant">
+  <div class="container">
+    <div class="participant-content">
+      <h2>Torne-se um participante</h2>
+      <p>Informe o teu email para se tornar um participante</p>
+    </div>
+
+    <div class="newslatter">
+      <form action="#">
+        <div class="form-control">
+          <input type="text" placeholder="Informe o seu email para proceguir" />
+          <button>Enviar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-social">
+      <a href="#" class="brand">
+        <div class="wrap">
+          <strong>SpeakWithUs</strong>
+          <span>JobSeeker</span>
+        </div>
+      </a>
+
+      <p>Desenvolvido por Eugenia e Maria</p>
+    </div>
+
+    <div class="footer-content">
+      <div class="footer-content-top">
+        <div>
+          <h3>Suporte</h3>
+          <ul>
+            <li>Ajuda</li>
+            <li>FaQ</li>
+            <li>formulario de contrato</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Projectos</h3>
+          <ul>
+            <li>sobre</li>
+            <li>Serviço</li>
+            <li>Funcionalidade</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Legal</h3>
+          <ul>
+            <li>Termos</li>
+            <li>Politicas de privacidade</li>
+            <li>politicas de cookies</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="address">
+        <div>
+          <h3>Endereço</h3>
+          <ul>
+            <li>Rua tal</li>
+            <li>cazenga</li>
+            <li>mabor</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% endblock %}

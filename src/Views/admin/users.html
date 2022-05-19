@@ -1,0 +1,109 @@
+{% extends "@admin/shared/base.html" %} 
+
+{% block styles %}
+
+<link
+  rel="stylesheet"
+  href="assets/admin/vendors/mdi/css/materialdesignicons.min.css"
+/>
+<link rel="stylesheet" href="assets/admin/vendors/css/vendor.bundle.base.css" />
+
+{% endblock %} 
+
+{% block content %}
+
+<div class="container-scroller">
+  <!-- partial:partials/_sidebar.html -->
+  {% include "@admin/shared/sidebar.html" %}
+  <!-- partial -->
+  <div class="container-fluid page-body-wrapper">
+    <!-- content-header ends -->
+    {% include "@admin/shared/header.html" %}
+    <!-- content-header ends -->
+    <div class="main-panel">
+      <div class="content-wrapper">
+        <!-- partial -->
+        <div class="page-header">
+          <h3 class="page-title">Lista de Usuários</h3>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+              <li class="breadcrumb-item active" aria-current="page">
+                Usuários
+              </li>
+            </ol>
+          </nav>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            {# <form class="forms-sample">
+              <div class="form-group">
+                <label for="exampleInputUsername1">Pesquisar</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputUsername1"
+                  placeholder="Pesquisar por usuários"
+                />
+              </div>
+            </form> #}
+          </div>
+          <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th class="text-white">Nome</th>
+                        <th class="text-white">Categoria</th>
+                        <th class="text-white">Email</th>
+                        <th class="text-white">Telefone</th>
+                        <th class="text-white">Estado</th>
+                        <th colspan="12"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for row in users %}                        
+                        <tr>
+                          <td>{{ row.nome }}</td>
+                          <td>{{ row.cargo }}</td>
+                          <td>{{ row.email }}</td>
+                          <td>{{ row.numero }}</td>
+                          <td>
+                            {% if row.estado == 1 %}
+                              <label class="badge badge-success">Active</label>
+                            {% else %}
+                              <label class="badge badge-danger">Inativo</label>
+                            {% endif %}
+                          </td>
+
+                          <td style="display: flex; justify-content: flex-end">
+                            <div class="icons-action">
+                              <a 
+                              onclick="return confirm('Deseja actualizar a permissão?')"
+                              href="/speak_with_us/update/{{ row.id }}/user-state">
+                                <img
+                                  src="src/assets/images/edit-white.png"
+                                  alt="edit"
+                                />
+                              </a>
+                            </div>
+                          </td>
+                        </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+</div>
+
+{% endblock %}

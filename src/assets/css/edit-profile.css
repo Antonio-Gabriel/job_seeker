@@ -1,0 +1,233 @@
+header {
+  padding: 1.4rem 1rem;
+}
+
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .container .navbar {
+  display: flex;
+  align-items: center;
+}
+
+header .container .brand .wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+header .container .brand .wrap strong {
+  font-size: calc(1.875rem - 0.4rem);
+
+  background: -webkit-linear-gradient(90deg, #ecaa80 0%, #725de5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  margin-bottom: 0.2rem;
+}
+
+header .container .brand .wrap span {
+  font-size: 12px;
+  color: var(--text);
+  font-weight: 600;
+}
+
+header .container .navbar li + li {
+  margin-left: calc(3.25rem - 1rem);
+}
+
+header .container .navbar li a {
+  font-size: 14px;
+  color: var(--text);
+
+  transition: color 0.2s ease;
+}
+
+header .container .navbar li a:hover {
+  color: var(--primary);
+}
+
+header .container .buttons {
+  display: flex;
+  align-items: center;
+  gap: calc(3.25rem - 1.5rem);
+
+  font-size: 14px;
+}
+
+header .container .buttons a:first-child {
+  color: var(--text-800);
+  font-weight: 500;
+}
+
+header .container .buttons a:first-child:hover {
+  color: var(--text);
+}
+
+header .container .buttons a:last-child {
+  padding: 12px 1rem;
+  background-color: var(--secondary);
+  border-radius: 10px;
+  color: var(--text);
+  cursor: pointer;
+
+  font-weight: 700;
+
+  transition: all 0.2s ease-in;
+}
+
+header .container .buttons a:last-child:hover {
+  background: var(--primary);
+}
+
+/*EDIT PROFILE*/
+
+.avatar-upload {
+  position: relative;
+  max-width: 205px;
+  margin: 50px auto;
+}
+
+.avatar-upload .avatar-edit {
+  position: absolute;
+  right: 12px;
+  z-index: 1;
+  top: 10px;
+}
+
+.avatar-upload .avatar-edit input {
+  display: none;
+}
+
+.avatar-upload .avatar-edit input + label {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 0;
+  border-radius: 100%;
+  background: #ffffff;
+  border: 1px solid transparent;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  font-weight: normal;
+  transition: all 0.2s ease-in-out;
+}
+
+.avatar-upload .avatar-edit input + label:hover {
+  background: #f1f1f1;
+  border-color: #d6d6d6;
+}
+.avatar-upload .avatar-edit input + label::after {
+  content: url(../images/edit-icon.png);
+  font-family: "FontAwesome";
+  color: #757575;
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: auto;
+}
+
+.avatar-upload .avatar-preview {
+  width: 192px;
+  height: 192px;
+  position: relative;
+  border-radius: 100%;
+  border: 6px solid #f8f8f8;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+.avatar-upload .avatar-preview > div {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+/*END EDIT PROFILE*/
+
+.edit-top {
+  margin-top: 1rem;
+  color: var(--text);
+
+  text-align: center;
+}
+
+.edit-profile form .form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 20px;
+}
+
+.edit-profile form .other {
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+.edit-profile form .form-control {
+  display: flex;
+  flex-direction: column;
+
+  /* width: 35%; */
+}
+
+.edit-profile form .form-control label {
+  color: var(--text);
+  font-size: 14px;
+
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.edit-profile form .form-control input {
+  height: 44px;
+  border-radius: 6px;
+
+  padding-left: 1rem;
+}
+
+.edit-profile form .form-control textarea {
+  border-radius: 6px;
+
+  padding: 1rem;
+}
+
+.edit-profile form .form-control input:focus {
+  outline: none;
+}
+
+.edit-profile form .form-control input::placeholder {
+  font-size: 12px;
+
+  opacity: 0.7;
+}
+
+.edit-profile form button {
+  margin-top: 1.2rem;
+
+  width: 100%;
+  height: 44px;
+  border-radius: 6px;
+
+  border: none;
+  background-color: var(--primary);
+  font-weight: bold;
+  color: var(--text);
+
+  cursor: pointer;
+
+  transition: all 0.2s ease-in;
+
+  margin-bottom: 3rem;
+}
+
+.edit-profile form button:hover {
+  filter: brightness(0.8);
+}

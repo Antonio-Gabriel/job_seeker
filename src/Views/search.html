@@ -1,0 +1,95 @@
+{% extends "@shared/base.html" %} 
+
+{% block title %}Pesquisar{% endblock %}
+
+{%block head %} 
+    {{ parent() }}
+    <link rel="stylesheet" href="src/assets/css/search.css" />
+{% endblock %} 
+
+{% block content %}
+
+{% include "@shared/header.html" %}
+
+<section class="search">
+  <div class="container">
+    <div class="search-content">
+      <h1>Pesquisar por trabalho</h1>
+
+      <form 
+        method="get"
+        action={{ route("/search") }}
+        >
+        <div class="form-control">
+          <input 
+            type="text" 
+            name="search"
+            value="{{ search }}"
+            placeholder="Encontre seus trabalhos" 
+            />
+          <button>Pesquisar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="jobs">
+  <div class="container">
+    {# <div class="categories">
+      <h2>Categorias</h2>
+
+      <div class="form">
+        {% for row in categories %}
+          {% if row.estado != 0 %}      
+            <a class="radio" href="/speak_with_us/search?category={{ row.id }}">
+              <input type="radio" id="{{ row.nome }}" name="category" />
+              <label for="{{ row.nome }}">{{ row.nome }}</label>
+            </a>
+          {% endif %}
+        {% endfor %}              
+      </div>
+    </div> #}
+    <div class="job-list">
+      {% for item in projects %}        
+        <div class="project">
+          <a href="#" class="logo"> SU </a>
+          <h2>{{ item.nome }}</h2>
+
+          <p>
+            {{ item.descricao }}
+          </p>
+
+          <div class="tags">
+            {% for row in splitArgsByComma(item.habilidades)|slice(0, 3) %}            
+              <span>{{ row }}</span>
+            {% endfor %}                     
+          </div>
+
+          <div class="buttons">
+            {% if user %}          
+              <a href="/speak_with_us/apply/{{ item.id }}/project" class="apply">Aplicar agora</a>
+            {% endif %}
+            <a href="/speak_with_us/details/{{ item.id }}" class="description">Descrição</a>
+          </div>
+        </div>
+      {% endfor %}          
+    </div>
+  </div>
+</section>
+
+{# <section class="pagination">
+  <div class="container">
+    <div class="pages">
+      <a href="#" class="page active">1</a>
+      <a href="#" class="page">2</a>
+      <a href="#" class="page">3</a>
+    </div>
+  </div>
+</section> #}
+
+{% endblock %} 
+
+{% block scripts %}
+<script src="assets/js/activePage.js"></script>
+{% endblock %}

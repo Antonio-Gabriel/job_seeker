@@ -1,0 +1,117 @@
+{% extends "@admin/shared/base.html" %} 
+
+{% block styles %}
+
+<link
+  rel="stylesheet"
+  href="assets/admin/vendors/mdi/css/materialdesignicons.min.css"
+/>
+<link rel="stylesheet" href="assets/admin/vendors/css/vendor.bundle.base.css" />
+
+{% endblock %} 
+
+{% block content %}
+
+<div class="container-scroller">
+  <!-- partial:partials/_sidebar.html -->
+  {% include "@admin/shared/sidebar.html" %}
+  <!-- partial -->
+  <div class="container-fluid page-body-wrapper">
+    <!-- content-header ends -->
+    {% include "@admin/shared/header.html" %}
+    <!-- content-header ends -->
+    <div class="main-panel">
+      <div class="content-wrapper">
+        <!-- partial -->
+        <div class="page-header">
+          <h3 class="page-title">Lista de inscritos</h3>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+              <li class="breadcrumb-item active" aria-current="page">
+                Inscritos
+              </li>
+            </ol>
+          </nav>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <form 
+                action={{ route("/enrollments") }}
+                method="get"
+                class="col-md-12">
+                <div class="row align-items-center">
+                  <div class="forms-sample col-md-11">
+                    <div class="form-group">
+                      <label>Categoria</label>
+                      <select class="js-example-basic-single" name="category" style="width: 100%">                        
+                        {% for row in categories %}
+                          {% if row.estado == 1 %}
+                            <option value={{ row.id }}>{{ row.nome }}</option>                                            
+                          {% endif %}
+                        {% endfor %}                       
+                      </select>
+                    </div>                    
+                  </div>
+
+                  <div class="col-md-1">
+                    <button type="submit" class="btn btn-primary py-2">Pesquisar</button>
+                  </div>
+                </div>
+              </form>            
+            </div>
+          </div>
+          <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th class="text-white">Nome</th>
+                        <th class="text-white">Email</th>
+                        <th class="text-white">Referência</th>
+                        <th class="text-white">Nome do projecto</th>
+                        <th class="text-white">Habilidades</th>
+                        <th colspan="12"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for row in enrollmenrs %}     
+                        {% if row.estado_do_projecto == "Pendente" %}                        
+                          <tr>
+                            <td>{{ row.nome_usuario }}</td>
+                            <td>{{ row.email }}</td>
+                            <td>{{ row.referencia }}</td>
+                            <td>{{ row.nome_projecto }}</td>
+                            <td>{{ row.desc_habilidades }}</td>
+
+                            <td style="display: flex; justify-content: flex-end">
+                              <div class="icons-action">
+                                <a href="/speak_with_us/project/{{ row.projecto_id }}/user/{{ row.usuario_id }}">
+                                  <img
+                                    src="src/assets/images/edit-white.png"
+                                    alt="edit"
+                                  />
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+                        {% endif %}                   
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+</div>
+
+{% endblock %}

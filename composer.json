@@ -1,0 +1,21 @@
+{
+  "name": "vendor/speack_with_us",
+  "description": "Este projecto é para encontrar trabalhos instantâneos no sector de desenvolvimento e não só.",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "SpeackWithUs\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Eugenia-Maria",
+      "email": "speakwithus@gmail.com"
+    }
+  ],
+  "require": {
+    "vlucas/phpdotenv": "^5.4",
+    "twig/twig": "^3.0",
+    "slim/slim": "3.*"
+  }
+}

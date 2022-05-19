@@ -1,0 +1,154 @@
+.projects form {
+  position: relative;
+
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.projects form .form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.projects form .form-group label {
+  margin-bottom: 10px;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.projects form .form-group input {
+  width: 100%;
+  height: 55px;
+
+  background-color: #f5f7fb;
+  color: var(--background);
+
+  border: none;
+
+  padding-left: 22px;
+  border-radius: 4px;
+}
+
+.projects form .form-group input::placeholder {
+  color: rgba(36, 36, 48, 0.562);
+}
+
+.projects form .form-group input:focus {
+  outline: none;
+}
+
+.projects form button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  width: 55px;
+  height: 55px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 4px;
+
+  border: none;
+  outline: none;
+
+  background-color: var(--primary);
+
+  transition: all 0.2s ease-in;
+
+  cursor: pointer;
+}
+
+.projects form button:hover {
+  filter: brightness(0.8);
+}
+
+.projects .container .jobs {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.projects .container .jobs .job {
+  background-color: #fcfdff;
+  border-radius: 4px;
+
+  display: flex;
+  align-items: center;
+
+  height: 96px;
+  padding: 0 2rem;
+}
+
+.projects .container .jobs .job .id {
+  font-weight: bold;
+  color: #bfbfcc;
+
+  margin-right: 2rem;
+}
+
+.projects .container .jobs .job h2 {
+  font-size: 24px;
+  color: #5a5a66;
+
+  width: 340px;
+}
+
+.projects .container .jobs .job .endTime,
+.projects .container .jobs .job .valor {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.projects .container .jobs .job .valor {
+  margin-left: auto;
+}
+
+.projects .container .jobs .job .endTime span,
+.projects .container .jobs .job .valor span {
+  font-size: 12px;
+  font-weight: 600;
+
+  color: #bfbfcc;
+}
+
+.projects .container .jobs .job .endTime strong,
+.projects .container .jobs .job .valor strong {
+  font-weight: 600;
+  color: #787880;
+}
+
+.projects .container .jobs .job .status {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.projects .container .jobs .job .status span {
+  font-size: 14px;
+  padding: 8px 24px;
+  font-weight: bold;
+
+  color: #36b236;
+  background: #e8f8e8;
+  border-radius: 40px;
+}
+
+.projects .container .jobs .job .status.finish span {
+  color: #eb3b35;
+  background: #faeceb;
+}
+
+.projects .container .jobs .job .status.padding span {
+  color: #ff8800;
+  background: #ff880185;
+}
+
+.projects .container .jobs .job .detail {
+  cursor: pointer;
+}

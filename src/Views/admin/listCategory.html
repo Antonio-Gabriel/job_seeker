@@ -1,0 +1,127 @@
+{% extends "@admin/shared/base.html" %} 
+
+{% block styles %}
+
+<link
+  rel="stylesheet"
+  href="assets/admin/vendors/mdi/css/materialdesignicons.min.css"
+/>
+<link rel="stylesheet" href="assets/admin/vendors/css/vendor.bundle.base.css" />
+
+{% endblock %} 
+
+{% block content %}
+
+<div class="container-scroller">
+  <!-- partial:partials/_sidebar.html -->
+  {% include "@admin/shared/sidebar.html" %}
+  <!-- partial -->
+  <div class="container-fluid page-body-wrapper">
+    <!-- content-header ends -->
+    {% include "@admin/shared/header.html" %}
+    <!-- content-header ends -->
+    <div class="main-panel">
+      <div class="content-wrapper">
+        <!-- partial -->
+        <div class="page-header">
+          <h3 class="page-title">Lista de categorias</h3>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href={{ route("/dashboard") }}>Dashboard</a></li>
+              <li class="breadcrumb-item active" aria-current="page">
+                Categoria
+              </li>
+            </ol>
+          </nav>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <form 
+            action={{ route("/category-list") }}
+            method="get"
+            class="forms-sample">
+              <div class="form-group">
+                <label for="exampleInputUsername1">Pesquisar</label>
+                <input
+                  type="text"
+                  class="form-control text-white"
+                  name="search"
+                  value="{{ search }}"
+                  placeholder="Pesquisar por categoria"
+                />
+              </div>
+            </form>
+          </div>
+          <div class="col-lg-12">
+            {% if status != 0 %}
+              <div>
+                {% if status == 200 %}      
+                  <div class="alert alert-success" role="alert">
+                    {{ message }}
+                  </div>
+                {% else %}
+                  <div class="alert alert-danger" role="alert">
+                    {{ message }}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+          <div class="col-md-12 grid-margin stretch-card">              
+            <div class="card">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th class="text-white">Nome</th>
+                        <th class="text-white">Estado</th>
+                        <th colspan="12"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for category in categories %}                      
+                      <tr>
+                        <td>{{ category.nome }}</td>
+                        <td>
+                          {% if category.estado == 1%}
+                            <label class="badge badge-success">Activo</label>
+                          {% else %}
+                            <label class="badge badge-danger">Inativo</label>
+                          {% endif %}
+                        </td>
+                        <td style="display: flex; justify-content: flex-end">
+                          <div class="icons-action">                            
+                            <a href="/speak_with_us/edit/{{ category.id }}/category">
+                              <img
+                                src="src/assets/images/edit-white.png"
+                                alt="edit"
+                              />
+                            </a>
+                            <a 
+                            onclick="return confirm('Deseja eliminar essa categoria?')"                           
+                            href="/speak_with_us/delete/{{ category.id }}/category">
+                              <img
+                                src="src/assets/images/trash-white.png"
+                                alt="delete"
+                              />
+                            </a>
+                          </div>
+                        </td>
+                      </tr>                
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+</div>
+
+{% endblock %}

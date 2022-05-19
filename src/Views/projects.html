@@ -1,0 +1,151 @@
+{% extends "@shared/base.html" %} 
+
+{% block title %}Perfil{% endblock %} 
+
+{%block head %} {{ parent() }}
+  <link rel="stylesheet" href="/speak_with_us/src/assets/css/profile.css" />
+  <link rel="stylesheet" href="/speak_with_us/src/assets/css/projects.css" />
+{% endblock %} 
+
+{% block content %} 
+
+{% include "@shared/header.html" %}
+
+<section class="profile">
+  <div class="container">
+    <div class="profile-card">
+      <div class="avatar">
+        <img
+          src="/speak_with_us/src/assets/images/empty.png"
+          alt="worker picture"
+        />
+      </div>
+
+      <a href={{ route("/profile-edit") }} class="edit">
+        <img src="/speak_with_us/src/assets/images/edit-icon.png" alt="exit the user profile" />
+      </a>
+
+      <div class="profile-card-base">
+        <div class="describes">
+          <ul>
+            <li>
+              <span>
+                {% if user.habilidades %}            
+                  {{ splitArgsByComma(user.habilidades)|length }}
+                {% else %}
+                  0
+                {% endif %}
+              </span>
+              <a href="/speak_with_us/profile">Habilidades</a>
+            </li>
+
+            <li>
+              <span>
+                {% if jobs %}
+                  {{ jobs|length }}
+                {% else %}                  
+                  0
+                {% endif %}
+              </span>
+              <a href="/speak_with_us/user/projects">Projectos lista</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="profile-info">
+          <h1>{{ user.nome }}</h1>
+          {% if user.cargo %}
+            <span>{{ user.cargo }}</span>
+          {% else %}
+            <span>Desconhecido</span>
+          {% endif %}
+        </div>
+
+        <div class="social-networks">
+          <a href="{{ user.linkedIn }}">
+            <img src="/speak_with_us/src/assets/images/linkedin.png" alt="linkedIn icon" />
+          </a>
+
+          <a href="{{ user.gitHub }}">
+            <img src="/speak_with_us/src/assets/images/github.png" alt="gitHub icon" />
+          </a>
+
+          <a href="{{ user.portofolio }}">
+            <img src="/speak_with_us/src/assets/images/link.png" alt="portofolio icon" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="projects">
+  <div class="container">
+    {# <form action="#">
+      <div class="form-group">
+        <label for="project">Pesquisar pelo projecto</label>
+        <input type="text" placeholder="Pesquisar trabalhos" />
+      </div>
+      <button type="submit">
+        <img src="/speak_with_us/src/assets/images/plus.png" alt="add habilities" />
+      </button> #}
+    </form>
+
+    {% if status != 0 %}
+    <div>
+      {% if status == 200 %}      
+        <div class="alert alert-success" role="alert" style="background: blue; color: white; padding: 12px;">
+          {{ message }}
+        </div>
+      {% else %}
+        <div class="alert alert-danger" role="alert" style="background: red; color: white; padding: 12px;">
+          {{ message }}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+    <div class="jobs">
+      {% set counter = 1 %}
+      {% for row in jobs %}      
+        <div class="job">
+          <span class="id"> {{ loop.index }} </span>
+          <h2>{{ row.project }}</h2>
+
+          <div class="endTime">
+            <span>PRAZO</span>
+            <strong>{{ calculateTotalHours(row.data_inicio, row.data_fim) }} horas</strong>
+          </div>
+
+          <div class="valor">
+            <span>PRICE</span>
+            <strong>{{ formatNumber(row.preco) }}</strong>
+          </div>
+
+          {% if row.estado_do_projecto == "Pendente" %}          
+            <div class="status padding">
+              <span>Pendente</span>
+            </div>
+
+            {% elseif row.estado_do_projecto == "Processando" %}
+              <div class="status">
+                <span>Aprovado</span>
+              </div>
+
+            {% else %}
+              <div class="status finish">
+                <span>Pendente</span>
+              </div>
+          {% endif %}
+
+          {# <div class="detail">
+            <img src="assets/images/edit-new.png" alt="edit icon" />
+          </div> #}
+        </div>
+      {% endfor %}
+      
+    </div>
+  </div>
+</section>
+
+{% endblock %}

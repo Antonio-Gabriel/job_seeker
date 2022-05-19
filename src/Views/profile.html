@@ -1,0 +1,203 @@
+{% extends "@shared/base.html" %} 
+
+{% block title %}Perfil{% endblock %} 
+
+{%block head %} 
+    {{ parent() }}
+    <link rel="stylesheet" href="src/assets/css/profile.css" />
+{% endblock %} 
+
+{% block content %}
+
+{% include "@shared/header.html" %}
+
+<section class="profile">
+  <div class="container">
+    <div class="profile-card">
+      <div class="avatar">
+        <img
+          src="src/assets/images/empty.png"
+          alt="worker picture"
+        />
+      </div>
+
+      <a href={{ route("/profile-edit") }} class="edit">
+        <img src="src/assets/images/edit-icon.png" alt="exit the user profile" />
+      </a>
+
+      <div class="profile-card-base">
+        <div class="describes">
+          <ul>
+            <li>
+              <span>
+                {% if user.habilidades %}
+                  {{ splitArgsByComma(user.habilidades)|length }}
+                {% else %}
+                    0
+                {% endif %}
+              </span>
+              <a href="/speak_with_us/profile">Habilidades</a>
+            </li>
+
+            <li>
+              <span>
+                {% if jobs %}
+                  {{ jobs|length }}
+                {% else %}                  
+                  0
+                {% endif %}
+              </span>
+              <a href="/speak_with_us/user/projects">Projectos lista</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="profile-info">
+          <h1>{{ user.nome }}</h1>
+          {% if user.cargo %}
+            <span>{{ user.cargo }}</span>
+          {% else %}
+            <span>Desconhecido</span>
+          {% endif %}
+        </div>
+
+        <div class="social-networks">
+          <a href="{{ user.linkedIn }}">
+            <img src="src/assets/images/linkedin.png" alt="linkedIn icon" />
+          </a>
+
+          <a href="{{ user.gitHub }}">
+            <img src="src/assets/images/github.png" alt="gitHub icon" />
+          </a>
+
+          <a href="{{ user.portofolio }}">
+            <img src="src/assets/images/link.png" alt="portofolio icon" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% if status != 0 %}
+  <div>
+    {% if status == 200 %}      
+      <div class="alert alert-success" role="alert">
+        {{ message }}
+      </div>
+    {% else %}
+      <div class="alert alert-danger" role="alert">
+        {{ message }}
+      </div>
+    {% endif %}
+  </div>
+{% endif %}
+
+<section class="description">
+  <div class="container">
+    <aside>
+      <h2>Mais informações</h2>
+
+      <ul>
+        <li>
+          <span>Email</span>
+          <p>{{ user.email }}</p>
+        </li>
+
+        <li>
+          <span>Cidade</span>
+          <p>{{ user.cidade }}</p>
+        </li>
+
+        <li>
+          <span>Número</span>
+          <p>{{ user.numero }}</p>
+        </li>
+
+        <li>
+          <span>Bairro</span>
+          <p>{{ user.bairro }}</p>
+        </li>
+
+        <li>
+          <span>Rua</span>
+          <p>{{ user.rua }}</p>
+        </li>
+      </ul>
+    </aside>
+
+    <div class="about-me">
+      <div class="me">
+        <h2>Saiba um pouco sobre mim</h2>
+        <p>
+         {{ user.descricao }}
+        </p>
+      </div>
+
+      <div class="habilities">
+        <div class="hability-top">
+          <h2>Habilidades</h2>
+
+          {# <a href="#" class="add">
+            <img src="src/assets/images/plus.png" alt="add new hability" />
+          </a> #}
+        </div>
+
+        {% if user.habilidades %}      
+          <div class="tags">
+            {% for row in splitArgsByComma(user.habilidades) %}            
+              <span>{{ row }}</span>
+            {% endfor %}                     
+          </div>      
+
+        {% else %}
+          <p>Sem habilidades</p>          
+        {% endif %}                  
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-content-header">
+      <h1>Adicionar Habilidade</h1>
+      <span class="close">&times;</span>
+    </div>
+
+    <div class="modal-body">
+      <form action="#">
+        <div class="form-group">
+          <input type="text" placeholder="Adicionar habilidade" />
+        </div>
+        <button type="submit">
+          <img src="src/assets/images/plus.png" alt="add habilities" />
+        </button>
+      </form>
+
+      <div class="habilities">
+        <h2>Habilidades</h2>
+        <div class="tags">
+          <span>
+            Html
+            <img src="src/assets/images/close.png" alt="close icon" />
+          </span>
+          <span>
+            Css
+            <img src="src/assets/images/close.png" alt="close icon" />
+          </span>
+          <span>
+            Javascript
+            <img src="src/assets/images/close.png" alt="close icon" />
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} 
+
+{% block scripts %}
+    <script src="src/assets/js/toggle.js"></script>
+{% endblock %}

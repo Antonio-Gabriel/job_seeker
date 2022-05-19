@@ -1,0 +1,88 @@
+{% extends "@shared/base.html" %} 
+
+{% block title %}Descrição{% endblock %}
+
+{%block head %} 
+    {{ parent() }}
+    <link rel="stylesheet" href="/speak_with_us/src/assets/css/description.css" />
+{% endblock %} 
+
+{% block content %}
+
+{% include "@shared/header.html" %}
+
+<section class="details">
+  <div class="container">
+    <div class="detail-top">
+      <a href="#" class="logo"> SU </a>
+
+      <div class="more-info">
+        <h1>{{ project.nome }}</h1>
+        {# <p>Postado dia: 12/02/2022</p> #}
+      </div>
+
+      <div class="grapich">
+        <div class="graph">
+          <span>Data de início</span>
+          <strong>{{ formateDate(project.data_inicio) }}</strong>
+        </div>
+
+        <div class="graph">
+          <span>Data do término</span>
+          <strong>{{ formateDate(project.data_fim) }}</strong>
+        </div>
+
+        <div class="graph">
+          <span>Categoria</span>
+          <strong>{{ project.categoria }}</strong>
+        </div>
+      
+        <div class="graph">
+          <span>Preço</span>
+          <strong>{{ formatNumber(project.preco) }}</strong>
+        </div>
+      </div>
+
+      <div class="applyment">
+        {% if user %}
+          <a href="/speak_with_us/apply/{{ project.id }}/project" class="apply">Aplicar agora</a>
+        {% endif %}
+      </div>
+    </div>  
+
+    {% if status != 0 %}
+    <div>
+      {% if status == 200 %}      
+        <div class="alert alert-success" role="alert" >
+          {{ message }}
+        </div>
+      {% else %}
+        <div class="alert alert-danger" role="alert" style="background: red; color: white; padding: 12px;">
+          {{ message }}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+    <div class="detail-content">
+      <div class="description">
+        <h2>Descrição</h2>
+
+        <p>
+          {{ project.descricao }}
+        </p>
+      </div>
+
+      <div class="habilities">
+        <h2>Habilidates</h2>
+
+        <div class="tags">
+          {% for row in splitArgsByComma(project.habilidades) %}            
+            <span>{{ row }}</span>
+          {% endfor %}                     
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

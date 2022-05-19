@@ -1,0 +1,91 @@
+{% extends "@admin/shared/base.html" %} 
+
+{% block styles %}
+
+<link
+  rel="stylesheet"
+  href="assets/admin/vendors/mdi/css/materialdesignicons.min.css"
+/>
+<link rel="stylesheet" href="assets/admin/vendors/css/vendor.bundle.base.css" />
+
+{% endblock %} 
+
+{% block content %}
+
+<div class="container-scroller">
+  <!-- partial:partials/_sidebar.html -->
+  {% include "@admin/shared/sidebar.html" %}
+  <!-- partial -->
+  <div class="container-fluid page-body-wrapper">
+    <!-- content-header ends -->
+    {% include "@admin/shared/header.html" %}
+    <!-- content-header ends -->
+    <div class="main-panel">
+      <div class="content-wrapper">
+        <!-- partial -->
+        <div class="page-header">
+          <h3 class="page-title">Adicionar tarega Tarefa</h3>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Tarefa</li>
+            </ol>
+          </nav>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <form 
+              action={{ route("/approved") }}
+              method="post"
+              class="row"
+              >
+              <div class="col-md-6">
+                <input type="hidden" name="userId" value="{{ user.id }}">
+                <input type="hidden" name="projectId" value="{{ project.id }}">
+                <div class="form-group">
+                  <label for="exampleInputUsername1">Nome do trabalhador</label>
+                  <input
+                    type="text"
+                    name="name"
+                    value="{{ user.nome }}"
+                    class="form-control"
+                    style="color: black"
+                    id="exampleInputUsername1"
+                    placeholder="Preço do projecto"    
+                    disabled                                    
+                  />
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="exampleInputUsername1">Projecto</label>
+                  <input
+                    type="text"
+                    name="project"
+                    value="{{ project.nome }}"
+                    class="form-control"
+                    style="color: black"
+                    id="exampleInputUsername1"
+                    placeholder="Preço do projecto"
+                    disabled
+                  />
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <button type="submit" class="btn btn-primary mr-2">
+                  Atribuir tarefa
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+</div>
+
+{% endblock %}

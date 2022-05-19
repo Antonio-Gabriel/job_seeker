@@ -1,0 +1,88 @@
+{% extends "@shared/base.html" %} 
+
+{% block title %}Criar Conta{% endblock %} 
+
+{%block head %} 
+    {{ parent() }}
+    <link rel="stylesheet" href="src/assets/css/signIn.css" />    
+{% endblock %} 
+
+{% block content %}
+<section class="signIn">
+  <div class="photo"></div>
+  <div class="signIn-content">
+    <header>
+      <h2>Criar Conta</h2>
+      <p>Faça o login para navegar na plataforma</p>
+    </header>
+
+    {% if status != 0 %}
+      <div>
+        {% if status == 200 %}      
+          <div class="alert alert-success" role="alert">
+            {{ message }}
+          </div>
+        {% else %}
+          <div class="alert alert-danger" role="alert">
+            {{ message }}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <form 
+      method="post"
+      action={{ route("/register-user") }}
+      >
+      <div class="form-control">
+        <label for="name">Nome: </label>
+        <input 
+          type="text" 
+          name="name" 
+          placeholder="example@gmail.com" 
+          required
+          />
+      </div>
+
+      <div class="form-control">
+        <label for="email">Email: </label>
+        <input 
+          type="text" 
+          name="email"
+          placeholder="example@gmail.com" 
+          required
+          />
+      </div>
+
+      <div class="form-control">
+        <label for="phone">Número: </label>
+        <input 
+          type="text" 
+          name="phone"
+          placeholder="+244 929878777" 
+          required
+          />
+      </div>
+
+      <div class="form-control">
+        <label for="password">Password: </label>
+        <input 
+          type="password" 
+          name="password" 
+          placeholder="Password" 
+          required
+          />
+      </div>
+
+      {# <div class="form-control">
+        <label for="confirmPassword">Confirmar password: </label>
+        <input type="password" placeholder="Confirmar password" />
+      </div> #}
+
+      <button>Criar Conta</button>
+
+      <p>Já tenho uma conta <a href={{ route("/signIn") }}>Login</a></p>
+    </form>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,35 @@
+<header>
+    <div class="container">
+    <a href={{ route("/") }} class="brand">
+        <div class="wrap">
+        <strong>SpeakWithUs</strong>
+        <span>JobSeeker</span>
+        </div>
+    </a>
+
+    <ul class="navbar">
+        <li class="nav-item">
+        <a href={{ route("/") }} class="nav-link">Início</a>
+        </li>
+        <li class="nav-item">
+        <a href={{ route("/search") }} class="nav-link">Pesquisar trabalho</a>
+        </li>
+        <li class="nav-item">
+        <a href="#" class="nav-link">Sobre nós</a>
+        </li>
+        <li class="nav-item">
+        <a href="#" class="nav-link">Contactos</a>
+        </li>
+    </ul>
+    
+    <div class="buttons">
+        {% if user %}        
+            <a href={{ route("/profile") }} class="signIn">Perfil</a>
+            <a href={{ route("/logout-user") }} class="signIn" style="background: red;">Terminar sessão</a>
+        {% else %}        
+            <a href={{ route("/signIn") }} class="signIn">Entrar</a>
+            <a href={{ route("/signUp") }} class="signUp">Criar conta</a>
+        {% endif %}
+    </div>
+    </div>
+</header>

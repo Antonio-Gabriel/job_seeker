@@ -1,0 +1,166 @@
+{% extends "@shared/base.html" %} 
+
+{% block title %}Editar Perfil{% endblock %}
+
+{%block head %} 
+    {{ parent() }}
+    <link rel="stylesheet" href="src/assets/css/edit-profile.css" />
+{% endblock %} 
+
+{% block content %} 
+
+{% include "@shared/header.html" %}
+
+<section class="edit-profile">
+  <div class="container">
+    <div class="edit-top">
+      <h1>Editar meu perfil</h1>
+    </div>
+
+    <div class="avatar-upload">
+      <div class="avatar-edit">
+        <input type="file" id="imageUpload" accept=".png, .jpg, .jpeg" />
+        <label for="imageUpload"></label>
+      </div>
+      <div class="avatar-preview">
+        <div
+          id="imagePreview"
+          style="background-image: url(src/assets/images/empty.png)"
+        ></div>
+      </div>
+    </div>
+
+    <form 
+      method="post"
+      action={{ route("/profile-update") }}
+      >
+      <div class="form">
+        <input type="hidden" name="id" value="{{ user.id }}">
+        <div class="form-control">
+          <label for="name">Nome: </label>
+          <input 
+            type="text" 
+            name="nome"
+            value="{{ user.nome }}"
+            placeholder="john doe" 
+            />
+        </div>
+  
+        <div class="form-control">
+          <label for="email">Email: </label>
+          <input 
+            type="text" 
+            name="email"
+            value="{{ user.email }}"
+            placeholder="example@gmail.com" />
+        </div>
+  
+        <div class="form-control">
+          <label for="phone">Número: </label>
+          <input 
+            type="text" 
+            name="numero"
+            value="{{ user.numero }}"
+            placeholder="+244 929878777" />
+        </div>
+  
+        <div class="form-control">
+          <label for="city">Cidade: </label>
+          <input 
+            type="text" 
+            placeholder="Luanda" 
+            name="cidade"
+            value="{{ user.cidade }}"
+            />
+        </div>
+  
+        <div class="form-control">
+          <label for="district">Bairro: </label>
+          <input 
+            type="text" 
+            name="bairro"
+            value="{{ user.bairro }}"
+            placeholder="Hoji-ya-henda" />
+        </div>
+  
+        <div class="form-control">
+          <label for="road">Rua: </label>
+          <input 
+            type="text" 
+            name="rua"
+            value="{{ user.rua }}"
+            placeholder="Zamba 4" />
+        </div>
+  
+        <div class="other"> 
+          <h3 style="color: white;">Dados do perfil</h3>
+  
+  
+          <div class="form-control">
+            <label for="road">Cargo: </label>
+            <input 
+              type="text" 
+              name="cargo"
+              value="{{ user.cargo }}"
+              placeholder="Cargo" />
+          </div>
+    
+          <div class="form-control">
+            <label for="road">Descrição: </label>
+            <textarea rows="8" name="descricao" placeholder="Descrição do perfil">
+              {{ user.descricao }}
+            </textarea>
+          </div>
+        </div>
+  
+  
+        <div class="other"> 
+          <h3 style="color: white;">Redes</h3>
+  
+          <div class="form-control">
+            <label for="road">LinkedIn: </label>
+            <input 
+              type="text" 
+              name="linkedIn"
+              value="{{ user.linkedIn }}"
+              placeholder="https://linkedIn.com/user" />
+          </div>
+    
+          <div class="form-control">
+            <label for="road">Github: </label>
+            <input 
+              type="text" 
+              name="gitHub"
+              value="{{ user.gitHub }}"
+              placeholder="https://github.com/user" />
+          </div>  
+        </div>
+  
+        <div class="form-control">
+          <label for="road">Habilidade:  <small>Separe as habilidades por vírgula</small> </label>
+          <textarea rows="8" name="habilidades" placeholder="Descrição do perfil">
+            {{ user.habilidades }}
+          </textarea>
+        </div>
+
+        <div class="form-control">
+          <label for="road">Portofolio: </label>
+          <input 
+            type="text" 
+            name="portofolio"
+            value="{{ user.portofolio }}"
+            placeholder="https://example.com/" />
+        </div>                
+      </div>
+
+      <button>Editar perfil</button>
+    </form>
+  </div>
+</section>
+
+{% endblock %} 
+
+{% block scripts %}
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/upload.js"></script>
+{% endblock %}

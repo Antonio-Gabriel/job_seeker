@@ -1,0 +1,30 @@
+.icons-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.icons-action a {
+  width: 32.81px;
+  height: 32.81px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(69, 65, 90, 0.473);
+  border-radius: 4px;
+
+  transition: all 0.2s ease-in;
+}
+
+.icons-action a:hover {
+  background: #725de5;
+}
+
+.icons-action a img {
+  object-fit: cover;
+  width: 18px;
+  height: 18px;
+}
